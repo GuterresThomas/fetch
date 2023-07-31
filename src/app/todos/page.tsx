@@ -1,4 +1,3 @@
-
 type Todo = {
     userId: number,
     id: number,
