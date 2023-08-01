@@ -33,7 +33,7 @@ export default function Todos () {
     <div>
         <ul>
             {todos.map((todo) => (
-                <li key={todo.id}>{todo.title}</li>
+                <li key={todo.id} >{todo.title}</li>
             ))}
         </ul>
     </div>

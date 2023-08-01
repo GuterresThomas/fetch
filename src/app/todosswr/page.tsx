@@ -16,7 +16,7 @@ export default function Todos () {
         const {data, error, isLoading}  = useSWR<Todo[]>(URL, fetcher)
     return (
     <div>
-        <ul>
+        <ul className="bg-zinc-200">
             {data?.map((todo) => (
                 <li key={todo.id}>{todo.title}</li>
             ))}
