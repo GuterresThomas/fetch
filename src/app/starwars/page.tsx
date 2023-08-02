@@ -1,17 +1,25 @@
 'use client'
 import useSWR from "swr"
 
-type Person = {
-    name: string,
-	height: number,
-	mass: number
+type Product = {
+    title: string;
+    price: number;
+    id: number;
 }
 
- export default function Persons() {
+
+
+ export default function Products() {
     const fetcher = (url: string) => fetch(url).then((res) => res.json())
-    const URL = "https://swapi.dev/api/people/1/"
-    const { data, error, isLoading  }  = useSWR<Person[]>(URL, fetcher)
+    const URL = "https://fakestoreapi.com/products"
+    const { data, error, isLoading  }  = useSWR<Product[]>(URL, fetcher)
     return (
-        console.log(data)
+        <ul>
+            {data?.map((product) => (
+                <li key={product.id}>
+                    {product.title}
+                </li>
+            ))}
+        </ul>
         )
 }
