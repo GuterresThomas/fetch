@@ -1,30 +1,33 @@
 // Definição do tipo para a propriedade "hair"
 
-type HairType = {
-    color: string;
-    type: string;
-  };
+type HairType = [ {
+    color: string,
+    type: string,
+  },
+]
   
   // Definição do tipo para a propriedade "users"
-  type User = {
-    id: number;
-    firstName: string;
-    lastName: string;
-    maidenName?: string;
-    age: number;
-    gender: string;
-    email: string;
-    phone: string;
-    username: string;
-    password: string;
-    birthDate: string;
-    image: string;
-    bloodGroup: string;
-    height: number;
-    weight: number;
-    eyeColor: string;
-    hair: HairType;
-  };
+  type User = [ {
+    id: number,
+    firstName: string,
+    lastName: string,
+    maidenName?: string,
+    age: number,
+    gender: string,
+    email: string,
+    phone: string,
+    username: string,
+    password: string,
+    birthDate: string,
+    image: string,
+    bloodGroup: string,
+    height: number,
+    weight: number,
+    eyeColor: string,
+    hair: HairType,
+  },
+
+  ]
   
   // Exemplo de uso do tipo "User"
   const users: User[] = [
@@ -51,7 +54,8 @@ type HairType = {
       },
     },
     // Pode adicionar outros objetos de usuário aqui
-  ];
+  ]
 
-    export default users;
+  
+    export default users
   
