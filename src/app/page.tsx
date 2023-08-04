@@ -8,7 +8,7 @@ export default function Home () {
         <h1>Estudos de fetch:</h1>
         <ul>
           <Link href="/products"><li className="font-bold hover:scale-105">Produtos</li></Link>
-          <Link href="/todos"><li className="font-bold hover:scale-105">Todos</li></Link>
+          <Link href="/todoscli"><li className="font-bold hover:scale-105">Todos</li></Link>
           <Link href="/postscli"><li className="font-bold hover:scale-105">Posts</li></Link>
           <Link href=""><li></li></Link>
         </ul>

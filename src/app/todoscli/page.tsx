@@ -31,11 +31,14 @@ export default function Todos () {
     }, []);
     return (
     <div>
-        <ul>
-            {todos.map((todo) => (
-                <li key={todo.id} >{todo.title}</li>
-            ))}
-        </ul>
+        <div className="flex justify-center font-semibold "><h1>Todos:</h1></div>
+        <div className="h-screen  flex justify-center ">
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id} >{todo.title}</li>
+                ))}
+            </ul>
+        </div>
     </div>
     )
 }
