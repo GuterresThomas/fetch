@@ -1,15 +1,16 @@
 import React, {  } from "react"
+import Link from 'next/link'
 
-export function Home () {
+export default function Home () {
   return (
     <div>
       <div>
         <h1>Estudos de fetch:</h1>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <Link href="/products"><li>Produtos</li></Link>
+          <Link href=""><li></li></Link>
+          <Link href=""><li></li></Link>
+          <Link href=""><li></li></Link>
         </ul>
       </div>
     </div>
