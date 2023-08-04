@@ -1,6 +1,6 @@
 'use client'
 import useSWR from "swr"
-import Button from "@/components/button";
+//import Button from "@/components/button";
 
 
 type Product = {
@@ -20,7 +20,7 @@ type Product = {
     <div>
         <div className="flex justify-center font-semibold "><h1>Produtos</h1></div>
         <div className="h-screen  flex justify-center ">    
-            <Button />
+            
             <ul className="m-2">
                 {data?.map((product) => (
                     <li key={product.id}>
