@@ -9,7 +9,7 @@ export default function Home () {
         <ul>
           <Link href="/products"><li className="font-bold hover:scale-105">Produtos</li></Link>
           <Link href="/todos"><li className="font-bold hover:scale-105">Todos</li></Link>
-          <Link href=""><li></li></Link>
+          <Link href="/postscli"><li className="font-bold hover:scale-105">Posts</li></Link>
           <Link href=""><li></li></Link>
         </ul>
       </div>
