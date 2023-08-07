@@ -19,15 +19,17 @@ const UserList = () => {
   }
 
   return (
-    <div>
-      <h1>User List</h1>
-      {data.map((user) => (
-        <div key={user.id}>
-          <h2>{user.name}</h2>
-          <p>Age: {user.age}</p>
-          {/* Exibir outras informações do usuário conforme necessário */}
-        </div>
-      ))}
+    <div className="justify-center flex mt-9">
+      <div className=" bg-zinc-300 rounded-md p-4 font-sans font-semibold">
+        <h1>User List</h1>
+        {data.map((user) => (
+          <div key={user.id}>
+            <h2>{user.name}</h2>
+            <p>Age: {user.age}</p>
+            {/* Exibir outras informações do usuário conforme necessário */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
