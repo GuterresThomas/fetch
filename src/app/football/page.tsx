@@ -1,25 +1,44 @@
-type Post = {
-    id: number,
+
+'use client'
+import useSWR from "swr"
+
+type  League = {
+    data: {
+      id: number;
+      sport_id: number;
+      country_id: number;
+      name: string;
+      active: boolean;
+      short_code: string;
+      image_path: string;
+      type: string;
+      sub_type: string;
+      last_played_at: string;
+      has_jerseys: boolean;
+  };
+}
+      
+export default function Leagues() {
+//http https://swapi.dev/api/people/1/
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
+        const URL = ""
+        const {data, error, isLoading}  = useSWR<League[]>(URL, fetcher)
+        const dataArray = data ? [data] : [];
+//UKHiPmifWUXcImQYp2K6sSWPwLMBgiW1fFJfOzhVTSHSthnGUg8BbP0fT0mf
+                
+        return (
+            <ul> {data && (
+                    <li>
+                        Dados: {data.data}
+                        <br />
+                        
+                       
+                       
+                    </li>
+                )}
+            </ul>
+
+        )
 }
 
-
-async function getData(): Promise<Bet[]> {
-    const res = await fetch("https://v3.football.api-sports.io/transfers?player=35845", {
-        "headers": {
-            "x-rapidapi-host": "v3.football.api-sports.io",
-            "x-rapidapi-key": "1175bafbc2mshcbde2b5b68642f3p11ba34jsndd65f63e31f2"
-            }
-        })
-
-    if(!res.ok){
-        throw new Error('Erro ao carregar bets');   
-    }
-
-    const data = await res.json()
-}
-export default async function Bets () {
-    const posts = await getData() 
-    return (
-        <div></div>
-    )
-}
+//https://api.football-data.org/v4/teams/86/matches?status=SCHEDULED

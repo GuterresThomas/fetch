@@ -3,32 +3,74 @@ import useSWR from "swr"
 //import Button from "@/components/button";
 
 
-type Product = {
-    title: string;
-    price: number;
-    id: number;
-    category: string
-}
+import React, { useState, useEffect } from 'react';
 
+const ProductsApp = () => {
+  const [products, setProducts] = useState([]);
+  const [newProduct, setNewProduct] = useState({ name: '', price: 0 });
 
+  const fetchProducts = async () => {
+    const response = await fetch('http://localhost:3000/products');
+    const data = await response.json();
+    setProducts(data);
+  };
 
- export default function Products() {
-    const fetcher = (url: string) => fetch(url).then((res) => res.json())
-    const URL = "https://fakestoreapi.com/products"
-    const { data, error, isLoading  }  = useSWR<Product[]>(URL, fetcher)
-    return (
+  const addProduct = async () => {
+    const response = await fetch('http://localhost:3000/products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProduct),
+    });
+    if (response.status === 201) {
+      setNewProduct({ name: '', price: 0 });
+      fetchProducts();
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    const response = await fetch(`http://localhost:3000/products/${id}`, {
+      method: 'DELETE',
+    });
+    if (response.status === 204) {
+      fetchProducts();
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  return (
     <div>
-        <div className="flex justify-center font-semibold "><h1>Produtos</h1></div>
-        <div className="h-screen  flex justify-center ">    
-            
-            <ul className="m-2">
-                {data?.map((product) => (
-                    <li key={product.id}>
-                        <div className="mb-2">{product.title} {product.price} - {product.category}</div>      
-                    </li>
-                ))}
-            </ul>
-        </div>
+      <h1>Lista de Produtos</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.name} - R${product.price.toFixed(2)}
+            <button onClick={() => deleteProduct(product.id)}>Excluir</button>
+          </li>
+        ))}
+      </ul>
+      <h2>Adicionar Novo Produto</h2>
+      <input
+        type="text"
+        placeholder="Nome"
+        value={newProduct.name}
+        onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
+      />
+      <input
+        type="number"
+        placeholder="Preço"
+        value={newProduct.price}
+        onChange={(e) =>
+          setNewProduct({ ...newProduct, price: parseFloat(e.target.value) })
+        }
+      />
+      <button onClick={addProduct}>Adicionar</button>
     </div>
-        )
-}
+  );
+};
+
+export default ProductsApp;
